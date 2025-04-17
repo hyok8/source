@@ -17,8 +17,42 @@
 
 <body>
     <!-- 네이버 추척기 테스트 -->
-    <h1><a href="https://i-web.kr/green18/">데스크탑</a></h1>
-    <h1><a href="https://m.i-web.kr/?SITE_ID=green18">모바일</a></h1>
+    <h1><a href="https://i-web.kr/green18/" onclick="trackNaverReservation(event)">데스크탑</a></h1>
+    <h1><a href="https://m.i-web.kr/?SITE_ID=green18" onclick="trackNaverM(event)">모바일</a></h1>
+
+    <script type="text/javascript">
+        function trackNaverReservation(event) {
+        
+        event.preventDefault(); // submit , a
+
+        if (window.wcs) {
+           wcs.inflow("https://4thdraw.github.io/4thdraw/"); 
+               var _conv = {};
+               _conv.type = "purchase"; // 전환 유형 설정
+               wcs.trans(_conv); // 전환 데이터 전송
+        }
+        
+        window.open("https://i-web.kr/green18/", "_blank");
+        }
+
+
+
+        function trackNaverM(event) {
+        
+        event.preventDefault(); // submit , a
+        
+        if (window.wcs) {
+           wcs.inflow("https://4thdraw.github.io/4thdraw/"); 
+               var _conv = {};
+               _conv.type = "purchase2"; // 전환 유형 설정
+               wcs.trans(_conv); // 전환 데이터 전송
+        }
+        window.open("https://m.i-web.kr/?SITE_ID=green18", "_blank");
+        }
+
+
+        </script>
+        
 </body>
 
 </html>
