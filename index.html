@@ -16,9 +16,69 @@
 </head>
 
 <body>
-    네이버 추척기 테스트
-    <h1><a href="https://i-web.kr/green18/">됐나</a></h1>
-    <h1><a href="https://i-web.kr/green18/">됐나</a></h1>
+    <!-- 네이버 추척기 테스트 -->
+    <h1><a href="https://i-web.kr/green18/" onclick="trackNaverReservation(event)">데스크탑</a></h1>
+    <h1><a href="https://m.i-web.kr/?SITE_ID=green18" onclick="trackNaverM(event)">모바일</a></h1>
+    <p onClick="navergo()">네이버</p>
+
+
+    <script type="text/javascript">
+        function trackNaverReservation(event) {
+
+            event.preventDefault(); // submit , a
+
+            if (window.wcs) {
+                wcs.inflow("https://hyok8.github.io/source/");
+                var _conv = {};
+                _conv.type = "purchase"; // 전환 유형 설정
+                wcs.trans(_conv); // 전환 데이터 전송
+            }
+
+            window.open("https://i-web.kr/green18/", "_blank");
+        }
+
+
+
+        function trackNaverM(event) {
+
+            event.preventDefault(); // submit , a
+
+            if (window.wcs) {
+                wcs.inflow("https://hyok8.github.io/source/");
+                var _conv = {};
+                _conv.type = "purchase2"; // 전환 유형 설정
+                wcs.trans(_conv); // 전환 데이터 전송
+            }
+            window.open("https://m.i-web.kr/?SITE_ID=green18", "_blank");
+        }
+        function navergo() {
+            window.open("https://www.naver.com", "_blank");
+        }
+
+
+    </script>
+    <a href="tel:01050999398" onclick="trackAndCall(event, '01050999398')">전화걸기</a>
+    <script type="text/javascript">
+        function trackAndCall(event, phoneNumber) {
+            // 기본 동작 중단
+            event.preventDefault();
+
+            // 데이터 수집 로직
+            if (window.wcs) {
+                wcs.inflow("https://hyok8.github.io/source/");
+                var _conv = {};
+                _conv.type = "custom001";
+                wcs.trans(_conv); // 전환 데이터 전송
+            }
+
+            // 전화 연결
+            setTimeout(() => {
+                window.location.href = `tel:${phoneNumber}`;
+            }, 500); // 데이터 전송 후 0.5초 후 전화 연결
+        }
+    </script>
+
+
 </body>
 
 </html>
